@@ -63,9 +63,6 @@ declare class Swiper extends SvelteComponentTyped<
    * Event will be fired when lazy loading image will be loaded
    */
   lazyImageReady: CustomEvent<[swiper: SwiperClass, slideEl: HTMLElement, imageEl: HTMLElement]>;/**
-   * Event will be fired on mousewheel scroll
-   */
-  scroll: CustomEvent<[swiper: SwiperClass, event: WheelEvent]>;/**
    * Event will be fired on navigation hide
    */
   navigationHide: CustomEvent<[swiper: SwiperClass]>;
@@ -73,6 +70,9 @@ declare class Swiper extends SvelteComponentTyped<
    * Event will be fired on navigation show
    */
   navigationShow: CustomEvent<[swiper: SwiperClass]>;/**
+   * Event will be fired on mousewheel scroll
+   */
+  scroll: CustomEvent<[swiper: SwiperClass, event: WheelEvent]>;/**
    * Event will be fired after pagination rendered
    */
   paginationRender: CustomEvent<[swiper: SwiperClass, paginationEl: HTMLElement]>;
