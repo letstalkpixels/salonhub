@@ -7,7 +7,8 @@ $(".splide").each((index) => {
     type: "slide", // 'loop' or 'slide'
     gap: "1rem", // space between slides
     arrows: false, // 'slider' or false
-    pagination: false, // 'slider' or false
+    pagination: true, // 'slider' or false
+    paginationKeyboard: true,
     speed: 600, // transition speed in miliseconds
     dragAngleThreshold: 30, // default is 30
     autoWidth: false, // for cards with differing widths
