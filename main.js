@@ -56,8 +56,6 @@ $(".splide").each((index) => {
     );
 
     [...activeSlidePagination].forEach((element) => {
-      console.log(element);
-
       if (element.getAttribute("class").includes("active")) {
         element.focus();
 
@@ -67,7 +65,6 @@ $(".splide").each((index) => {
   });
 
   splideElement.addEventListener("mouseleave", () => {
-    console.log(lastFocusElement);
     if (lastFocusElement) {
       lastFocusElement.blur();
     }
