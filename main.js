@@ -3,12 +3,10 @@ $(".splide").each((index) => {
     // Desktop on down
     perPage: 2.5,
     perMove: 1,
-    focus: 0, // 0 = left and 'center' = center
+    focus: 'center', // 0 = left and 'center' = center
     type: "slide", // 'loop' or 'slide'
     gap: "1rem", // space between slides
     arrows: false, // 'slider' or false
-    pagination: true, // 'slider' or false
-    paginationKeyboard: true,
     speed: 600, // transition speed in miliseconds
     dragAngleThreshold: 30, // default is 30
     autoWidth: false, // for cards with differing widths
