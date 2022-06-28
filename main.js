@@ -1,9 +1,12 @@
 $(".splide").each((index) => {
+  const splideElement = $(".splide")[index];
+
   const splide = new Splide($(".splide")[index], {
     // Desktop on down
     perPage: 2.5,
     perMove: 1,
-    focus: 'center', // 0 = left and 'center' = center
+    focus: 0, // 0 = left and 'center' = center
+    slideFocus: true,
     type: "slide", // 'loop' or 'slide'
     gap: "1rem", // space between slides
     arrows: false, // 'slider' or false
@@ -41,6 +44,31 @@ $(".splide").each((index) => {
   });
 
   splide.mount();
+
+  const splidePagination = splideElement.getElementsByClassName(
+    "splide__pagination"
+  )[0];
+  let lastFocusElement = null;
+
+  splideElement.addEventListener("mouseenter", () => {
+    const activeSlidePagination = splidePagination.getElementsByClassName(
+      "splide__pagination__page"
+    );
+
+    [...activeSlidePagination].forEach((element) => {
+      if (element.getAttribute("class").includes("active")) {
+        element.focus();
+
+        lastFocusElement = element;
+      }
+    });
+  });
+
+  splideElement.addEventListener("mouseleave", () => {
+    if (lastFocusElement) {
+      lastFocusElement.blur();
+    }
+  });
 });
 
 $(".faq-item").click(function () {
