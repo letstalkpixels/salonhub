@@ -84,13 +84,28 @@ $(".faq-item").click(function () {
 
 
 (() => {
-  const dateElementsToConvert = document.getElementsByClassName('date-conversion');
+  const convertDates = () => {
+    const dateElementsToConvert = document.getElementsByClassName('date-conversion');
 
-  for (let index in [...dateElementsToConvert]) {
-    const element = dateElementsToConvert[index];
-    const date = new Date(element.textContent);
-    const formattedDate = new Intl.DateTimeFormat('nl-NL', { year: 'numeric', month: 'long' }).format(date);
+    for (let index in [...dateElementsToConvert]) {
+      const element = dateElementsToConvert[index];
+      const date = new Date(element.textContent);
 
-    element.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+      if (!(date instanceof Date && isFinite(date))) {
+        continue;
+      }
+
+      const formattedDate = new Intl.DateTimeFormat('nl-NL', { year: 'numeric', month: 'long' }).format(date);
+
+      element.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+    }
   }
+
+  const loadMoreNewsButtons = document.getElementsByClassName('w-pagination-next');
+
+  for (let index in [...loadMoreNewsButtons]) {
+    loadMoreNewsButtons[index].addEventListener('click', () => setTimeout(() => convertDates()));
+  }
+
+  convertDates();
 })();
