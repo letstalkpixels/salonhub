@@ -81,3 +81,16 @@ $(".faq-item").click(function () {
     $(this).removeClass("open");
   }
 });
+
+
+(() => {
+  const dateElementsToConvert = document.getElementsByClassName('date-conversion');
+
+  for (let index in [...dateElementsToConvert]) {
+    const element = dateElementsToConvert[index];
+    const date = new Date(element.textContent);
+    const formattedDate = new Intl.DateTimeFormat('nl-NL', { year: 'numeric', month: 'long' }).format(date);
+
+    element.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+  }
+})();
